@@ -69,8 +69,9 @@ with io.open(os.path.join(SteamPath, 'csgo/resource/csgo_english.txt'), 'r', enc
             start = True
 
 
-with open('item_index.txt', 'w') as outfile:
+with open('csgo_wpaints.cfg', 'w') as outfile:
+    outfile.write('"Paints"\n{\n')
     for n in skindata:
         tag = skindata[n]['description_tag']
-
-        outfile.write("%s: %s\n" % (n, namedata[tag.lower()].encode('utf-8')))
+        outfile.write('    "%s"\n    {\n        "paint"    "%s"\n    }\n' % (namedata[tag.lower()].encode('utf-8'), n))
+    outfile.write('}')
